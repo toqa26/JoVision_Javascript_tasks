@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Info Form</title>
+</head>
+<body>
+
+    <h2>User Information</h2>
+    
+    <input type="text" id="name" placeholder="Name" title="Name">
+    <input type="number" id="age" placeholder="Age" title="Age">
+    <button id="submit-btn">Submit</button>
+
+    <script>
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const timestamp = new Date().toLocaleString(); 
+
+            const userInfo = {
+                name,
+                age,
+                timestamp
+            };
+
+            const { name: userName, age: userAge, timestamp: userTimestamp } = userInfo;
+
+            alert(`Your name is: ${userName}\nYour age is: ${userAge}\nTimestamp: ${userTimestamp}`);
+        });
+    </script>
+
+</body>
+</html>
