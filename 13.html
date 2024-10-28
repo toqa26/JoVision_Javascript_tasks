@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Age Predictor</title>
+</head>
+<body>
+
+    <h2>Age Predictor</h2>
+    
+    <input type="text" id="name" placeholder="Name" title="Name">
+    <button id="submit-btn">Submit</button>
+
+    <script>
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const apiUrl = `https://api.agify.io?name=${name}`;
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const { name: userName, age } = data;
+                    alert(`Your name is: ${userName}\nYour age is: ${age}`);
+                })
+                .catch(error => {
+                    alert('Error: ' + error.message);
+                });
+        });
+    </script>
+
+</body>
+</html>
