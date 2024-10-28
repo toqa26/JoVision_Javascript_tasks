@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+</head>
+<body>
+    <button id="button1">Remove Divisible by 3</button>
+    <button id="button2">Add Numbers 100 to 150</button>
+    <button id="button3">Add 3 to Each Number</button>
+    <button id="button4">Print Members from Index 20 to 40</button>
+    <button id="button5">Shuffle and Sort</button>
+
+    <script>
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function createArray() {
+            return Array.from({length: 101}, (_, i) => i);
+        }
+
+        document.getElementById('button1').addEventListener('click', function() {
+            const numbers = createArray();
+            const filtered = numbers.filter(num => num % 3 !== 0);
+            console.log('Numbers not divisible by 3:', filtered);
+        });
+
+        document.getElementById('button2').addEventListener('click', function() {
+            const numbers = createArray();
+            const extended = [...numbers, ...Array.from({length: 51}, (_, i) => i + 100)];
+            console.log('Numbers from 0 to 100 and 100 to 150:', extended);
+        });
+
+        document.getElementById('button3').addEventListener('click', function() {
+            const numbers = createArray();
+            const added = numbers.map(num => num + 3);
+            console.log('Numbers with 3 added:', added);
+        });
+
+        document.getElementById('button4').addEventListener('click', function() {
+            const numbers = createArray();
+            const slice = numbers.slice(20, 41);
+            console.log('Members from index 20 to 40:', slice);
+        });
+
+        document.getElementById('button5').addEventListener('click', function() {
+            const numbers = createArray();
+            shuffleArray(numbers);
+            console.log('Shuffled array:', numbers);
+            const sorted = [...numbers].sort((a, b) => b - a);
+            console.log('Sorted array in descending order:', sorted);
+        });
+    </script>
+</body>
+</html>
 
